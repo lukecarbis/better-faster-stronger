@@ -1,0 +1,93 @@
+@import url(http://fonts.googleapis.com/css?family=Droid+Serif);
+@import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+
+body {
+	font-family: 'Droid Serif';
+	font-size: 20px;
+	background: #fdf6e3;
+	color: #657b83;
+}
+h1, h2, h3 {
+	font-family: 'Yanone Kaffeesatz';
+	font-weight: 400;
+	margin-bottom: 0;
+	color: #586e75;
+}
+h1 { font-size: 4em; }
+h2 { font-size: 2em; }
+h3 { font-size: 1.6em; }
+.footnote {
+	position: absolute;
+	bottom: 3em;
+}
+li p { line-height: 1.25em; }
+
+.yellow { color: #b58900; }
+.orange { color: #cb4b16; }
+.red { color: #dc322f; }
+.magenta { color: #d33682; }
+.violet { color: #6c71c4; }
+.blue { color: #268bd2; }
+.cyan { color: #2aa198; }
+.green { color: #859900; }
+
+.large { font-size: 2em; }
+a, a > code {
+	color: #d33682;
+	text-decoration: none;
+}
+code {
+	-moz-border-radius: 5px;
+	-web-border-radius: 5px;
+	background: #eee8d5;
+	border-radius: 5px;
+	font-size: 16px;
+}
+.pull-left {
+	float: left;
+	width: 47%;
+}
+.pull-right {
+	float: right;
+	width: 47%;
+}
+.pull-right ~ p {
+	clear: both;
+}
+#slideshow .slide .content code {
+	font-size: 0.8em;
+}
+#slideshow .slide .content pre code {
+	font-size: 0.9em;
+	padding: 15px;
+}
+.inverse {
+	background: #002b36;
+	color: #839496;
+}
+.inverse h1, .inverse h2, .inverse h3 {
+	color: #93a1a1;
+	line-height: 0.8em;
+}
+
+/* Two-column layout */
+.left-column {
+	color: #93a1a1;
+	width: 20%;
+	height: 92%;
+	float: left;
+}
+.left-column h2:last-of-type, .left-column h3:last-child {
+  color: #657b83;
+}
+.right-column {
+	width: 75%;
+	float: right;
+	padding-top: 1em;
+}
+
+/* Slide specific styles */
+#slide-title p {
+	margin-top: 10em;
+	font-size: 0.67em;
+}
