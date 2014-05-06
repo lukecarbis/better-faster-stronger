@@ -24,8 +24,8 @@ class: center, middle
 ## .blue[Scripts & Styles]
 ## .magenta[AJAX]
 ## .cyan[Prefixing]
-## .yellow[Sanitizing & Escaping]
-## .violet[Internationalization]
+## .red[Sanitizing & Escaping]
+## .violet[Coding Standards]
 
 ???
 
@@ -34,7 +34,7 @@ There are many conventions and standards in WordPress development. We can't reme
 ---
 
 name: wait
-class: center, middle, inverse, inverse-red
+class: center, middle, inverse
 background-image: url(assets/img/wait.gif)
 
 # Wait... what, why?
@@ -104,7 +104,7 @@ name: why-prevent-conflicts
 
 ???
 
-We recently discovered a bug in Stream Reports, which was causing our reports page to go crazy if another plugin was enabled. This happened because the other plugin wasn't including their javascripts properly, and they were conflicting with some of the scripts on our page, causing errors.
+When one plugin doesn't include their javascript or stylesheets properly, it can mess with the functionality and display of another.
 
 ---
 
@@ -468,11 +468,11 @@ class: center, middle
 
 .large[This is better]
 
-`wp_stream_init()`
+`jetpack_init()`
 
 or
 
-`wp_stream_save()`
+`jetpack_require_lib()`
 
 ???
 
@@ -486,7 +486,7 @@ class: center, middle
 .large[This is even better]
 
 ```php
-class WP_Stream {
+class Akismet {
 	function init() {
 		// ...
 	}
@@ -495,7 +495,7 @@ class WP_Stream {
 	}
 }
 
-$GLOBALS['WP_Stream'] = new WP_Stream;
+$GLOBALS['akismet'] = new Akismet;
 ```
 
 ???
@@ -507,7 +507,7 @@ Then I will assign that class to a variable to initialize it. Make sure that the
 ---
 
 name: sanitizing-and-escaping
-class: center, middle, inverse, inverse-yellow
+class: center, middle, inverse, inverse-red
 
 # Sanitizing & Escaping
 
@@ -640,3 +640,91 @@ We're not going to go into all the different ways of using `$wpdb`, but we will 
 Prepare will allow us to specify where the query variables go, and what types they should be. Then it will automatically sanitize those variables to protect us from injection attacks.
 
 * http://codex.wordpress.org/Class_Reference/wpdb
+
+---
+
+name: coding-standards
+class: center, middle, inverse, inverse-violet
+
+# Coding Standards
+
+???
+
+Coding standards help avoid common coding errors, improve the readability of code, and simplify modification. They ensure that files within the project appear as if they were created by a single person.
+
+We can't talk about all of them, but we *can* touch on a few
+
+* http://make.wordpress.org/core/handbook/coding-standards/php/
+* http://make.wordpress.org/core/handbook/coding-standards/html/
+* http://make.wordpress.org/core/handbook/coding-standards/css/
+* http://make.wordpress.org/core/handbook/coding-standards/javascript/
+
+---
+
+name: coding-standards-notes-1
+
+## Indentation
+
+Use *real tabs* and not spaces.
+
+## Yoda Conditions
+
+```php
+if ( true == $the_force ) {
+    $victorious = you_will( $be );
+}
+```
+
+## Clever Code
+
+This is clever:
+
+```php
+isset( $var ) || $var = some_function();
+```
+
+But this is readable:
+
+```php
+if ( ! isset( $var ) ) {
+    $var = some_function();
+}
+```
+
+???
+
+We can't cover all the standards, but they're written out in plenty of details in the Make WordPress Core Handbook. Here are a few to look out for.
+
+Use tabs, not spaces.
+
+Yoda conditionals are a handy protection against simple mistakes. In this example, if you accidentally omit an equals sign, you’ll get a parse error, because you can’t assign to a constant like `true`. If the statement were the other way around `( $the_force = true )`, the assignment would be perfectly valid, returning `1`, causing the if statement to evaluate to `true`, and you could be chasing that bug for a while.
+
+Always value readability over brevity.
+
+---
+
+name: coding-standards-notes-2
+
+## Braces
+
+Always use braces, even where not required.
+
+**Not this:**
+
+```php
+if ( condition() )
+	return true;
+```
+**This:**
+
+```php
+if ( condition() ) {
+	return true;
+}
+```
+
+???
+
+This rule was changed at the end of 2013.
+
+* http://make.wordpress.org/core/2013/11/13/proposed-coding-standards-change-always-require-braces/
