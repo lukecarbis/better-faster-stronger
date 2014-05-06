@@ -4,7 +4,7 @@ class: center, middle, inverse, inverse-dark
 # .green[Better] .red[Faster] .blue[Stronger]
 ### Best Practices for Coding in WordPress
 
-[View this presentation on [GitHub](https://github.com/lukecarbis/better-faster-stronger)]
+[View on [GitHub](https://github.com/lukecarbis/better-faster-stronger)]
 
 [Press .magenta[P] to view notes]
 
