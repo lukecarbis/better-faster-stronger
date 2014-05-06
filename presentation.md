@@ -48,7 +48,7 @@ One of the first steps you'll need to take toward becoming a more competent Word
 name: aint-broke
 class: center, middle, inverse
 
-# If it 'aint broke, why fix it?
+# If it ain't broke, why fix it?
 
 ???
 
@@ -130,7 +130,7 @@ name: why-readability
 .contents[
 * Prevent conflicts
 * Prevent loading unecessary files
-* Readbility
+* Readability
 ]
 
 ???
@@ -148,7 +148,7 @@ name: why-maintainability
 .contents[
 * Prevent conflicts
 * Prevent loading unecessary files
-* Readbility
+* Readability
 * Maintainability
 ]
 
@@ -286,7 +286,7 @@ add_action( 'wp_enqueue_scripts', 'my_plugin_enqueue_scripts' ) );
 my_plugin_enqueue_scripts() {
 	wp_register_script( 'select2', 'ui/select2/select2.min.js', array( 'jquery' ), '3.4.5', true );
 	wp_register_style( 'select2', 'ui/select2/select2.css', array(), '3.4.5' );
-	
+
 	wp_enqueue_script( 'select2' );
 	wp_enqueue_style( 'select2' );
 }
@@ -299,7 +299,7 @@ my_plugin_admin_enqueue_scripts( $hook ) {
 	if ( 'index.php' === $hook ) {
 		wp_register_script( 'select2', 'ui/select2/select2.min.js', array( 'jquery' ), '3.4.5', true );
 		wp_register_style( 'select2', 'ui/select2/select2.css', array(), '3.4.5' );
-		
+
 		wp_enqueue_script( 'select2' );
 		wp_enqueue_style( 'select2' );
 	}
