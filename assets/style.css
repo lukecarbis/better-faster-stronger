@@ -1,6 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=Droid+Serif);
 @import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
 
+#source { display: none; }
 body {
 	font-family: 'Droid Serif';
 	font-size: 20px;
@@ -36,11 +37,19 @@ a, a > code {
 code {
 	-moz-border-radius: 5px;
 	-web-border-radius: 5px;
-	background: #eee8d5;
-	color: #657b83;
 	border-radius: 5px;
-	font-size: 16px;
-	padding: 0.5em;
+	background: #f0f0f0;
+	font-size: 18px;
+	padding: 0.25em;
+	margin-top: -0.25em;
+}
+pre {
+	-moz-border-radius: 5px;
+	-web-border-radius: 5px;
+	border-radius: 5px;
+	background: #f0f0f0;
+	overflow: scroll;
+	background: #f0f0f0;
 }
 .pull-left {
 	float: left;
@@ -125,7 +134,6 @@ code {
 .right-column {
 	width: 75%;
 	float: right;
-	padding-top: 1em;
 }
 
 /* Slide specific styles */
