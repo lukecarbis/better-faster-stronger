@@ -130,7 +130,7 @@ name: why-readability
 .contents[
 * Prevent conflicts
 * Prevent loading unecessary files
-* Readbility
+* Readability
 ]
 
 ???
@@ -148,7 +148,7 @@ name: why-maintainability
 .contents[
 * Prevent conflicts
 * Prevent loading unecessary files
-* Readbility
+* Readability
 * Maintainability
 ]
 
