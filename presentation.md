@@ -24,8 +24,8 @@ class: center, middle
 ## .blue[Scripts & Styles]
 ## .magenta[AJAX]
 ## .cyan[Prefixing]
-## .yellow[Database Queries]
-## .violet[Coding Standards]
+## .yellow[Sanitizing & Escaping]
+## .violet[Internationalization]
 
 ???
 
@@ -433,7 +433,7 @@ The action name used by PHP here is based on the `action` variable you sent from
 
 ---
 
-name: ajax
+name: prefixing
 class: center, middle, inverse, inverse-cyan
 
 # Prefixing
@@ -442,19 +442,201 @@ class: center, middle, inverse, inverse-cyan
 
 This is one that anyone who pastes code can do, no matter what level of skill you have.
 
-It’s a simple concept. Any functions you write have the potential to conflict with a theme, another plugin, or WordPress core itself.
-
-You simply need to make sure your functions have a unique name!
-
 * http://nacin.com/2010/05/11/in-wordpress-prefix-everything/
 
 ---
 
-name: coding-standards-kitten
-background-image: url(assets/img/coding-standards.jpg)
+name: prefixing-do-not
+class: center, middle
+
+.large[Do not name your functions]
+
+`custom_meta_box()`
+
+or
+
+`save_options()`
 
 ???
 
-## Coding Standards
-### Why Bother?
+It’s a simple concept. Don't use generic function names. Any functions you write have the potential to conflict with a theme, another plugin, or WordPress core itself.
 
+---
+
+name: prefixing-better
+class: center, middle
+
+.large[This is better]
+
+`wp_stream_init()`
+
+or
+
+`wp_stream_save()`
+
+???
+
+You simply need to make sure your functions have a unique name!
+
+---
+
+name: prefixing-even-better
+class: center, middle
+
+.large[This is even better]
+
+```php
+class WP_Stream {
+	function init() {
+		// ...
+	}
+	function save() {
+		// ...
+	}
+}
+
+$GLOBALS['WP_Stream'] = new WP_Stream;
+```
+
+???
+
+Functions are just the start. My preferred method of ensuring that there are no name conflicts is wrapping all my functions in a custom class.
+
+Then I will assign that class to a variable to initialize it. Make sure that the variable name is unique, too!
+
+---
+
+name: sanitizing-and-escaping
+class: center, middle, inverse, inverse-yellow
+
+# Sanitizing & Escaping
+
+???
+
+Making your theme or plugin secure is extremely important. There are simple ways to harden our code that we can keep in mind as we write it.
+
+* http://code.tutsplus.com/articles/7-simple-rules-wordpress-plugin-development-best-practices--wp-22996
+
+---
+
+name: sanitizing-and-escaping-outputs
+
+## Escape outputs
+
+Don't do this:
+
+```php
+echo home_url();
+```
+
+Do this:
+
+```php
+echo esc_url( home_url() );
+```
+
+\---
+
+Don't do this:
+
+```php
+$foo = $_GET[ 'foo' ];
+echo '<input type="hidden" name="foo" value="' . $foo . '" />';
+```
+
+Do this:
+
+```php
+$foo = esc_attr( $_GET[ 'foo' ] );
+echo '<input type="hidden" name="foo" value="' . $foo . '" />';
+```
+
+???
+
+Before you `echo` anything, you should always ask yourself whether or not you should escape it. 90% of the time, the answer should be yes.
+
+In these examples we're escaping with `esc_url` and `esc_attr`, but WordPress also has a whole host of other escaping functions including `esc_html`, `esc_js`, `esc_sql`, `esc_textarea`, etc.
+
+* http://codex.wordpress.org/Validating_Sanitizing_and_Escaping_User_Data#Escaping:_Securing_Output
+
+---
+
+name: sanitizing-and-escaping-inputs
+
+## Sanitize inputs
+
+Don't do this:
+
+```php
+$title = $_POST['title'];
+update_post_meta( $post->ID, 'title', $title );
+```
+
+Do this:
+
+```php
+$title = sanitize_text_field( $_POST['title'] );
+update_post_meta( $post->ID, 'title', $title );
+```
+
+\---
+
+Don't do this:
+
+```php
+$secondary_email = $_POST[ 'email' ];
+update_user_meta( $user_id, 'secondary_email', $secondary_email );
+```
+
+Do this:
+
+```php
+$secondary_email = sanitize_email( $_POST[ 'email' ] );
+update_user_meta( $user_id, 'secondary_email', $secondary_email );
+```
+
+???
+
+Before you save anything to the database, you should always ask yourself whether or not you should sanitize it. 99% of the time, the answer should be yes.
+
+In these examples we're sanitizing with `sanitize_text_field` and `sanitize_email`, but WordPress also has a whole host of other sanitizing functions including `sanitize_file_name, `sanitize_key`, `sanitize_meta`, `sanitize_title`, etc.
+
+* http://codex.wordpress.org/Validating_Sanitizing_and_Escaping_User_Data#Sanitizing:_Cleaning_User_Input
+
+---
+
+name: sanitizing-and-escaping-wpdb
+
+## Sanitize with $wpdb
+
+This is one way of getting all posts attributed to a particular author:
+
+```php
+global $wpdb;
+$results = $wpdb->get_results(
+	"SELECT ID, post_title FROM $wpdb->posts WHERE post_status = 'publish' AND post_author = 2"
+);
+```
+
+This is a safer way of doing the same thing:
+
+```php
+global $wpdb;
+$results = $wpdb->get_results(
+	$wpdb->prepare(
+		"SELECT ID, post_title FROM $wpdb->posts WHERE post_status = '%s' AND post_author = %d",
+		'publish',
+		2
+	)
+);
+```
+
+???
+
+Wordpress has a great helper class for querying the database, called `$wpdb`.
+
+We're not going to go into all the different ways of using `$wpdb`, but we will touch on it's `prepare` feature.
+
+Prepare will allow us to specify where the query variables go, and what types they should be. Then it will automatically sanitize those variables to protect us from injection attacks.
+
+* http://codex.wordpress.org/Class_Reference/wpdb

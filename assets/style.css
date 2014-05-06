@@ -42,6 +42,7 @@ code {
 	font-size: 18px;
 	padding: 0.25em;
 	margin-top: -0.25em;
+	font-family: 'Menlo';
 }
 pre {
 	-moz-border-radius: 5px;
@@ -147,4 +148,12 @@ pre {
 #slide-capital-p-fixed img {
 	width: 250px;
 	height: auto;
+}
+#slide-prefixing-do-not code,
+#slide-prefixing-better code,
+#slide-prefixing-even-better code {
+	font-size: 1.5em;
+}
+#slide-prefixing-even-better pre {
+	text-align: left;
 }
