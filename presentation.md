@@ -728,3 +728,24 @@ if ( condition() ) {
 This rule was changed at the end of 2013.
 
 * http://make.wordpress.org/core/2013/11/13/proposed-coding-standards-change-always-require-braces/
+
+---
+
+name: bye
+class: center, middle, inverse
+background-image: url(assets/img/bye.gif)
+
+# That's it!
+
+---
+
+name: notes
+class: center, middle, inverse
+
+## you can view this presentation at
+## https://lukecarbis.github.io/better-faster-stronger
+
+or
+
+## download and contribute at
+## https://github.com/lukecarbis/better-faster-stronger
