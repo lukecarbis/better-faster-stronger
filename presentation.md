@@ -48,7 +48,7 @@ One of the first steps you'll need to take toward becoming a more competent Word
 name: aint-broke
 class: center, middle, inverse
 
-# If it 'aint broke, why fix it?
+# If it ain't broke, why fix it?
 
 ???
 
