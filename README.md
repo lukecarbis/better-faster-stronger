@@ -8,3 +8,5 @@ What are the WordPress Coding Standards, and why should you use them? What’s t
 ---
 
 This repo is a slideshow with notes for the presentation above. Feel free to browse and contribute.
+
+You can view the slideshow at http://lukecarbis.github.io/better-faster-stronger/.
