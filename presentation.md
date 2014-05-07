@@ -599,7 +599,7 @@ update_user_meta( $user_id, 'secondary_email', $secondary_email );
 
 Before you save anything to the database, you should always ask yourself whether or not you should sanitize it. 99% of the time, the answer should be yes.
 
-In these examples we're sanitizing with `sanitize_text_field` and `sanitize_email`, but WordPress also has a whole host of other sanitizing functions including `sanitize_file_name, `sanitize_key`, `sanitize_meta`, `sanitize_title`, etc.
+In these examples we're sanitizing with `sanitize_text_field` and `sanitize_email`, but WordPress also has a whole host of other sanitizing functions including `sanitize_file_name`, `sanitize_key`, `sanitize_meta`, `sanitize_title`, etc.
 
 * http://codex.wordpress.org/Validating_Sanitizing_and_Escaping_User_Data#Sanitizing:_Cleaning_User_Input
 
