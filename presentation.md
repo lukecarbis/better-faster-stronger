@@ -10,7 +10,7 @@ class: center, middle, inverse, inverse-dark
 
 ???
 
-There is so much to learn when you're first starting out with WordPress development.
+There is a lot to learn when you're first starting out with WordPress development.
 
 Most of us start out by copying some code into our themes functions.php file. It's quick and dirty, but it works. You might not even understand *how* it works, but that's okay for now.
 
@@ -728,6 +728,93 @@ if ( condition() ) {
 This rule was changed at the end of 2013.
 
 * http://make.wordpress.org/core/2013/11/13/proposed-coding-standards-change-always-require-braces/
+
+---
+
+name: coding-standards-tools
+class: center, middle
+
+## PHP CodeSniffer
+
+### with WordPress Coding Standards rules
+
+https://github.com/WordPress-Coding-Standards/
+
+???
+
+There are some tools you can use to help ensure that your code always adheres with the WordPress Coding Standards.
+
+PHP CodeSniffer is a program that checks over your PHP code for mistakes and errors. You can find WordPress Coding Standards rules for PHP CodeSniffer on GitHub. Using these two tools together, you can integrate them as a check before you commit code to your git repo, or even integrate it with some IDE's like PHP Storm, which will put a spelling-error style underline under code which fails the WordPress Coding Standards check.
+
+---
+
+name: summary
+class: center, middle, inverse
+
+## .blue[Scripts & Styles]
+## .magenta[AJAX]
+## .cyan[Prefixing]
+## .red[Sanitizing & Escaping]
+## .violet[Coding Standards]
+
+???
+
+Let's quickly go over what we've talked about today.
+
+---
+
+name: next-steps
+class: center, middle, inverse
+background-image: url(assets/img/super.gif)
+
+# Three Steps
+
+### to supercharge your development
+
+???
+
+We've discussed some of the Best Practices you should be aware of when starting out with WordPress development, but I want to leave you with a few practical tips.
+
+Here are three very simple things you can do to supercharge your development skills.
+
+---
+
+name: next-steps-read
+class: center, middle, inverse
+
+# Read Code
+
+???
+
+This tip comes from Chris Lema. Take advantage of the fact that WordPress is an open source community. Read the code of people who you look up to. Nacin read many WordPress patches before he ever wrote any code.
+
+Take a look at the code of plugins that you like. Find some issues on Github and try to fix bugs.
+
+* http://chrislema.com/better-wordpress-developer
+
+---
+
+name: next-steps-peer-review
+class: center, middle, inverse
+
+# Peer Review
+
+???
+
+The single best thing I could do to improve my development is asking others to review my code. If you're fortunate enough to work in a team, enforce a policy that all code gets reviewed. If not, simply ask others to take a look. More often than not, they will be happy to.
+
+The flip side of this is reviewing other developers' code. Take this opportunity as often as you can.
+
+---
+
+name: next-steps-refactor
+class: center, middle, inverse
+
+# Refactor Old Code
+
+???
+
+This simple tip has unbelievable benefits. If you're embarressed by code you wrote a year ago, that's a good thing. It means that you're learning. By going back and refactoring old code, you'll see how far you've come, cement the knowledge that you've gained, and challenge yourself to enhance and simplify.
 
 ---
 
