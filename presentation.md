@@ -624,7 +624,7 @@ This is a safer way of doing the same thing:
 global $wpdb;
 $results = $wpdb->get_results(
 	$wpdb->prepare(
-		"SELECT ID, post_title FROM $wpdb->posts WHERE post_status = '%s' AND post_author = %d",
+		"SELECT ID, post_title FROM $wpdb->posts WHERE post_status = %s AND post_author = %d",
 		'publish',
 		2
 	)
