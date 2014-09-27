@@ -519,7 +519,7 @@ Making your theme or plugin secure is extremely important. There are simple ways
 
 ---
 
-name: sanitizing-and-escaping-outputs
+name: sanitizing-and-escaping-outputs-1
 
 ## Escape outputs
 
@@ -535,20 +535,30 @@ Do this:
 echo esc_url( home_url() );
 ```
 
-\---
+---
+
+name: sanitizing-and-escaping-outputs-2
+
+## Escape outputs
 
 Don't do this:
 
 ```php
 $foo = $_GET[ 'foo' ];
-echo '<input type="hidden" name="foo" value="' . $foo . '" />';
+$bar = $_GET[ 'bar' ];
+echo '<p id="' . $foo . '">' . $bar . '</p>';
 ```
 
 Do this:
 
 ```php
-$foo = esc_attr( $_GET[ 'foo' ] );
-echo '<input type="hidden" name="foo" value="' . $foo . '" />';
+echo wp_kses_post(
+	sprintf(
+		'<p id="%s">%s</p>',
+		esc_attr( $_GET[ 'foo' ] ),
+		esc_html( $_GET[ 'bar' ] )
+	)
+);
 ```
 
 ???
@@ -561,7 +571,7 @@ In these examples we're escaping with `esc_url` and `esc_attr`, but WordPress al
 
 ---
 
-name: sanitizing-and-escaping-inputs
+name: sanitizing-and-escaping-inputs-1
 
 ## Sanitize inputs
 
@@ -579,7 +589,11 @@ $title = sanitize_text_field( $_POST['title'] );
 update_post_meta( $post->ID, 'title', $title );
 ```
 
-\---
+---
+
+name: sanitizing-and-escaping-inputs-2
+
+## Sanitize inputs
 
 Don't do this:
 
