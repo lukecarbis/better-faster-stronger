@@ -686,7 +686,7 @@ Use *real tabs* and not spaces.
 ## Yoda Conditions
 
 ```php
-if ( true == $the_force ) {
+if ( true === $the_force ) {
     $victorious = you_will( $be );
 }
 ```
