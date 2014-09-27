@@ -386,7 +386,7 @@ wp.ajax.send( 'my_action', {
 	data: {
 		whatever: 1234
 	}
-} );
+});
 ```
 
 ???
