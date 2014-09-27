@@ -250,8 +250,8 @@ name: scripts-and-styles-better
 
 In your plugin, or in your functions.php file, use the `wp_enqueue_script` and `wp_enqueue_style` functions:
 ```php
-wp_register_script( 'select2', 'ui/select2/select2.min.js', array( 'jquery' ), '3.4.5', true );
-wp_register_style( 'select2', 'ui/select2/select2.css', array(), '3.4.5' );
+wp_register_script( 'select2', get_template_directory_uri() . 'ui/select2/select2.min.js', array( 'jquery' ), '3.4.5', true );
+wp_register_style( 'select2', get_template_directory_uri() . 'ui/select2/select2.css', array(), '3.4.5' );
 
 wp_enqueue_script( 'select2' );
 wp_enqueue_style( 'select2' );
@@ -284,8 +284,8 @@ Wrap your `wp_enqueue_script` and `wp_enqueue_style` calls in a function, which 
 add_action( 'wp_enqueue_scripts', 'my_plugin_enqueue_scripts' ) );
 
 my_plugin_enqueue_scripts() {
-	wp_register_script( 'select2', 'ui/select2/select2.min.js', array( 'jquery' ), '3.4.5', true );
-	wp_register_style( 'select2', 'ui/select2/select2.css', array(), '3.4.5' );
+	wp_register_script( 'select2', get_template_directory_uri() . 'ui/select2/select2.min.js', array( 'jquery' ), '3.4.5', true );
+	wp_register_style( 'select2', get_template_directory_uri() . 'ui/select2/select2.css', array(), '3.4.5' );
 
 	wp_enqueue_script( 'select2' );
 	wp_enqueue_style( 'select2' );
@@ -297,8 +297,8 @@ add_action( 'admin_enqueue_scripts', 'my_plugin_admin_enqueue_scripts' ) );
 
 my_plugin_admin_enqueue_scripts( $hook ) {
 	if ( 'index.php' === $hook ) {
-		wp_register_script( 'select2', 'ui/select2/select2.min.js', array( 'jquery' ), '3.4.5', true );
-		wp_register_style( 'select2', 'ui/select2/select2.css', array(), '3.4.5' );
+		wp_register_script( 'select2', get_template_directory_uri() . 'ui/select2/select2.min.js', array( 'jquery' ), '3.4.5', true );
+		wp_register_style( 'select2', get_template_directory_uri() . 'ui/select2/select2.css', array(), '3.4.5' );
 
 		wp_enqueue_script( 'select2' );
 		wp_enqueue_style( 'select2' );
