@@ -346,14 +346,12 @@ add_action( 'wp_enqueue_scripts', 'my_plugin_enqueue_scripts' ) );
 my_plugin_enqueue_scripts() {
 	wp_enqueue_script( 'my-script', 'ui/main.js', array( 'jquery', 'select2', 'heartbeat' ), 1.0 );
 
-	wp_localize_script(
-		'my-script',
-		'my_script_object',
-		array(
-			'ajaxurl' => admin_url( 'admin-ajax.php' ),
-			'foo'      => 'bar',
-		)
+	global $wp_scripts;
+	$data = array(
+		'ajaxurl' => admin_url( 'admin-ajax.php' ),
+		'foo'     => 'bar',
 	);
+	$wp_scripts->add_data( 'my-script', 'data', sprintf( 'var my_script_object = %s;', json_encode( $data ) ) );
 }
 ```
 
