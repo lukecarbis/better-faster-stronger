@@ -385,7 +385,7 @@ var data = {
 	whatever: 1234
 };
 
-$.post( my_script_object.ajaxurl, data, function( response ) {
+jQuery.post( my_script_object.ajaxurl, data, function( response ) {
 	alert( 'Got this from the server: ' + response );
 });
 ```
