@@ -410,6 +410,8 @@ The request goes to `admin-ajax.php`, which provides an action for you to hook i
 add_action( 'wp_ajax_my_action', 'my_action_callback' );
 
 function my_action_callback() {
+	// @todo nonce check
+	// @todo capability check
 	$whatever = intval( $_POST['whatever'] );
 
 	$whatever += 10;
