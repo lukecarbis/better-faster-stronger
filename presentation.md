@@ -387,7 +387,7 @@ var data = {
 
 jQuery.post( my_script_object.ajaxurl, data, function( response ) {
 	alert( 'Got this from the server: ' + response );
-} );
+});
 ```
 
 ???
