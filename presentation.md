@@ -344,14 +344,13 @@ name: ajax-localize
 add_action( 'wp_enqueue_scripts', 'my_plugin_enqueue_scripts' ) );
 
 my_plugin_enqueue_scripts() {
-	wp_enqueue_script( 'my-script', 'ui/main.js', array( 'jquery', 'select2', 'heartbeat' ), 1.0 );
+	wp_enqueue_script( 'my-script', 'ui/main.js', array( 'jquery', 'select2', 'heartbeat', 'wp-util' ), 1.0 );
 
 	wp_localize_script(
 		'my-script',
 		'my_script_object',
 		array(
-			'ajaxurl' => admin_url( 'admin-ajax.php' ),
-			'foo'      => 'bar',
+			'foo' => 'bar',
 		)
 	);
 }
@@ -380,13 +379,13 @@ name: ajax-send
 The `ajaxurl` variable is already defined by WordPress if you're in the admin area, and will point to the right place (which is `wp-content/admin-ajax.php`).
 
 ```javascript
-var data = {
-	action: 'my_action',
-	whatever: 1234
-};
-
-$.post( my_script_object.ajaxurl, data, function( response ) {
-	alert( 'Got this from the server: ' + response );
+wp.ajax.send( 'my_action', {
+	success: function( response ) {
+		alert( 'Got this from the server: ' + response );
+	},
+	data: {
+		whatever: 1234
+	}
 });
 ```
 
@@ -394,7 +393,8 @@ $.post( my_script_object.ajaxurl, data, function( response ) {
 
 The second step is actually making the AJAX call. A couple of things to note here:
 * You must always specify an action (this is used in step 3)
-* The `ajaxurl` variable is already defined by WordPress if you're in the admin area
+* Using WP Ajax should not be used from the frontend because response from `admin-ajax.php` are not cached (including `nocache_headers()`). Instead, you should add a new rewrite rule or query var with a `pre_get_posts`, and then do the `template_include` routine to select a template that returns JSON. A side benefit here is that it makes your site more RESTful.
+* Use `GET` requests instead of `POST` requests if doing queries or any idempotent action.
 
 ---
 
